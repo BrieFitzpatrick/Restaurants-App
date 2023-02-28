@@ -12,3 +12,4 @@ export const RESTAURANTS: Restaurant[] = [
 { name: 'Hmong Village',rank: 0.1},
 {name: 'Gyu-kaku Japanese BBQ', rank: 9.0}
 ];
+

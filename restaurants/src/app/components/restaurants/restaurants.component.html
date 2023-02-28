@@ -1,7 +1,28 @@
 <h2>Restaurants</h2>
 <ol class="restaurants">
     <li *ngFor="let restaurant of Restaurant">
+        <button [class.selected]="restaurant === selectedRestaurant" type="button" (click)="onSelect(restaurant)">
         <span class="name">{{restaurant.name}}</span>
-        <span class="type">({{restaurant.rank}})</span><br>
+        </button>
     </li>
   </ol>
+
+  <div *ngIf="selectedRestaurant">
+    <h2>{{selectedRestaurant.name | uppercase}} Details</h2>
+    <div>
+      <label for="restaurant-name">Restaurant name: </label>
+      <input id="restaurant-name" [(ngModel)]="selectedRestaurant.name" placeholder="name">
+      <div>Rank: {{selectedRestaurant.rank}}</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="new-restaurant">Restaurant name:</label>
+    <input type="new-restaurant" #restaurantName />
+
+    <!-- <label for="newrestaurant">Rank:</label>
+    <input type="newrestaurant" #restaurantRank /> -->
+
+    <button type="button" (click)="add(newRestaurant)">Add Restaurant</button>
+
+  </div>
