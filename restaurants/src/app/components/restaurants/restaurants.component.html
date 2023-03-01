@@ -7,6 +7,16 @@
     </li>
   </ol>
 
+  <div>
+    <label for="name">Restaurant name:</label>
+    <input id="name" [(ngModel)]="name" placeholder="name">
+
+    <label for="rank">Rank:</label>
+    <input id="rank" [(ngModel)]="rank" placeholder="rank">
+
+    <button type="button" (click)="add(name, rank)">Add Restaurant</button>
+  </div>
+
   <div *ngIf="selectedRestaurant">
     <h2>{{selectedRestaurant.name | uppercase}} Details</h2>
     <div>
@@ -16,13 +26,6 @@
     </div>
   </div>
 
-  <div>
-    <label for="new-restaurant">Restaurant name:</label>
-    <input type="new-restaurant" #restaurantName />
-
-    <!-- <label for="newrestaurant">Rank:</label>
-    <input type="newrestaurant" #restaurantRank /> -->
-
-    <button type="button" (click)="add(newRestaurant)">Add Restaurant</button>
-
+  <div *ngIf="selectedRestaurant">
+    <button type="button" (click)="delete(selectedRestaurant)">Delete Restaurant</button>
   </div>

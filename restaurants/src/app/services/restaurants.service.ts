@@ -1,4 +1,5 @@
 import { Restaurant } from "../models/restaurants.model";
+import { Component } from "@angular/core";
 
 export const RESTAURANTS: Restaurant[] = [
 { name: 'Broders', rank: 7.9},
@@ -12,4 +13,3 @@ export const RESTAURANTS: Restaurant[] = [
 { name: 'Hmong Village',rank: 0.1},
 {name: 'Gyu-kaku Japanese BBQ', rank: 9.0}
 ];
-

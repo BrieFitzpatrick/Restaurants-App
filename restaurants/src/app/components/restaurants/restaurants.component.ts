@@ -9,17 +9,30 @@ import { throwIfEmpty } from "rxjs";
     styleUrls: ['./restaurants.component.scss']
   })
   export class RestaurantsComponent {
-    newRestaurant = ''
     Restaurant = RESTAURANTS;
+    name: string = '' ;
+    rank: number = 0;
+    index: number = 0;
+
+    newRestaurant: Restaurant = {name: '', rank: 0};
 
     selectedRestaurant?: Restaurant;
     onSelect(restaurant: Restaurant): void{
       this.selectedRestaurant= restaurant;
     }
 
-    add(newRestaurant:any){
-      this.newRestaurant += newRestaurant.target.value;
-      this.Restaurant.push(newRestaurant);
+    add(newName: string, newRank: number){
+
+      this.newRestaurant = {name: newName, rank: newRank};
+      RESTAURANTS.push(this.newRestaurant);
     }
-  }
+  
+    delete(selectedRestaurant: Restaurant){
+      for(let i=0; i<RESTAURANTS.length; i++){
+        if(RESTAURANTS[i] === selectedRestaurant){
+          RESTAURANTS.splice(i, 1);
+        }
+     }
+    }
+}
   
