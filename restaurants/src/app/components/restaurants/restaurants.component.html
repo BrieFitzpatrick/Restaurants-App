@@ -1,8 +1,8 @@
 <h2>Restaurants</h2>
 <ol class="restaurants">
-    <li *ngFor="let restaurant of Restaurant">
-        <button [class.selected]="restaurant === selectedRestaurant" type="button" (click)="onSelect(restaurant)">
-        <span class="name">{{restaurant.name}}</span>
+    <li *ngFor="let restaurant of restaurants | keyvalue">
+        <button [class.selected]="restaurant.key === selectedRestaurant" type="button" (click)="onSelect(restaurant.key)">
+        <span class="name">{{restaurant.value.name}}</span>
         </button>
     </li>
   </ol>
@@ -14,23 +14,18 @@
     <label for="rank">Rank:</label>
     <input id="rank" [(ngModel)]="rank" placeholder="rank">
 
-    <label for="id">ID:</label>
-    <input id="id" [(ngModel)] = "id" placeholder="id">
-
-    <button type="button" (click)="add(id, name, rank)">Add Restaurant</button>
+    <button type="button" (click)="add(name, rank)">Add Restaurant</button>
   </div>
 
   <div *ngIf="selectedRestaurant">
-    <h2>{{selectedRestaurant.name | uppercase}} Details</h2>
+    <h2>{{selectedRestaurant | uppercase}} Details</h2>
     <div>
       <label for="restaurant-name">Restaurant name: </label>
-      <input id="restaurant-name" [(ngModel)]="selectedRestaurant.name" placeholder="name">
-      <div>Rank: {{selectedRestaurant.rank}}</div>
-      <label for="restaurant-id">ID: </label>
-      <input id="restaurant-id" [(ngModel)]="selectedRestaurant.id" placeholder="id">
+      <input id="restaurant-name" [(ngModel)]="newRestaurant.name" placeholder="name">
+      <div>Rank: {{newRestaurant.rank}}</div>
     </div>
   </div>
 
   <div *ngIf="selectedRestaurant">
-    <button type="button" (click)="delete(selectedRestaurant.id)">Delete Restaurant</button>
+    <button type="button" (click)="delete(selectedRestaurant)">Delete Restaurant</button>
   </div>

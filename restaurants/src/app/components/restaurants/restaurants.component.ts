@@ -1,41 +1,39 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Restaurant } from "../../models/restaurants.model";
-import { RESTAURANTS } from "src/app/services/restaurants.service";
 import { throwIfEmpty } from "rxjs";
+import { v4 as uuidv4 } from 'uuid';
+import { RestaurantsService } from "src/app/services/restaurants.service";
 
 @Component({
     selector: 'app-restaurants',
     templateUrl: './restaurants.component.html',
     styleUrls: ['./restaurants.component.scss']
   })
-  export class RestaurantsComponent {
-    Restaurant = RESTAURANTS;
+  export class RestaurantsComponent implements OnInit {
+    constructor(private restaurantsService: RestaurantsService){}
+    restaurants: {[id: string]: Restaurant} = {};
+
     name: string = '' ;
     rank: number = 0;
     id: number = 0;
 
-    newRestaurant: Restaurant = {id: 0, name: '', rank: 0};
-
-    selectedRestaurant?: Restaurant;
-    onSelect(restaurant: Restaurant): void{
-      this.selectedRestaurant= restaurant;
+    newRestaurant: Restaurant = { name: '', rank: 0};
+    selectedRestaurant?: string;
+    onSelect(restaurantKey: string): void{
+      this.selectedRestaurant= restaurantKey;
+    }
+    ngOnInit() {
+      this.restaurants = this.restaurantsService.getAll();
     }
 
-    add(newId: number, newName: string, newRank: number){
-
-      this.newRestaurant = {id: newId, name: newName, rank: newRank};
-      RESTAURANTS.push(this.newRestaurant);
+    add(name: string, rank: number){
+      this.restaurantsService.add(name, rank);
     }
-  
-    delete(id: number){
-      RESTAURANTS.splice(id-1, 1);
-      this.updateids(id);
-        }
 
-    updateids(id: number){
-      for (let i=id-1; id<RESTAURANTS.length; i++) {
-        RESTAURANTS[i].id = i+1;
-      }
+    delete(restaurantKey: string){
+      this.restaurantsService.delete(restaurantKey);
+
     }
+    //TODO: add constructor and inject service
 }
   
