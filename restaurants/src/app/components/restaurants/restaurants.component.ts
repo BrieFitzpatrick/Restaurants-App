@@ -29,10 +29,10 @@ import { throwIfEmpty } from "rxjs";
   
     delete(id: number){
       RESTAURANTS.splice(id-1, 1);
-      this.updateid(id);
+      this.updateids(id);
         }
 
-    updateid(id: number){
+    updateids(id: number){
       for (let i=id-1; id<RESTAURANTS.length; i++) {
         RESTAURANTS[i].id = i+1;
       }
