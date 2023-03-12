@@ -14,7 +14,10 @@
     <label for="rank">Rank:</label>
     <input id="rank" [(ngModel)]="rank" placeholder="rank">
 
-    <button type="button" (click)="add(name, rank)">Add Restaurant</button>
+    <label for="id">ID:</label>
+    <input id="id" [(ngModel)] = "id" placeholder="id">
+
+    <button type="button" (click)="add(id, name, rank)">Add Restaurant</button>
   </div>
 
   <div *ngIf="selectedRestaurant">
@@ -23,9 +26,10 @@
       <label for="restaurant-name">Restaurant name: </label>
       <input id="restaurant-name" [(ngModel)]="selectedRestaurant.name" placeholder="name">
       <div>Rank: {{selectedRestaurant.rank}}</div>
+      <div>ID: {{selectedRestaurant.id}}</div>
     </div>
   </div>
 
   <div *ngIf="selectedRestaurant">
-    <button type="button" (click)="delete(selectedRestaurant)">Delete Restaurant</button>
+    <button type="button" (click)="delete(selectedRestaurant.id)">Delete Restaurant</button>
   </div>

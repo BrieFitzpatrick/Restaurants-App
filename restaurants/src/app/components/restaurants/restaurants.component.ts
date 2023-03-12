@@ -12,27 +12,23 @@ import { throwIfEmpty } from "rxjs";
     Restaurant = RESTAURANTS;
     name: string = '' ;
     rank: number = 0;
-    index: number = 0;
+    id: number = 0;
 
-    newRestaurant: Restaurant = {name: '', rank: 0};
+    newRestaurant: Restaurant = {id: 0, name: '', rank: 0};
 
     selectedRestaurant?: Restaurant;
     onSelect(restaurant: Restaurant): void{
       this.selectedRestaurant= restaurant;
     }
 
-    add(newName: string, newRank: number){
+    add(newId: number, newName: string, newRank: number){
 
-      this.newRestaurant = {name: newName, rank: newRank};
+      this.newRestaurant = {id: newId, name: newName, rank: newRank};
       RESTAURANTS.push(this.newRestaurant);
     }
   
-    delete(selectedRestaurant: Restaurant){
-      for(let i=0; i<RESTAURANTS.length; i++){
-        if(RESTAURANTS[i] === selectedRestaurant){
-          RESTAURANTS.splice(i, 1);
+    delete(id: number){
+      RESTAURANTS.splice(id-1, 1);
         }
-     }
-    }
 }
   
