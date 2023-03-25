@@ -18,7 +18,7 @@
   </div>
 
   <div *ngIf="selectedRestaurant">
-    <h2>{{selectedRestaurant | uppercase}} Details</h2>
+    <h2>{{restaurants[selectedRestaurant].name | uppercase}} Details</h2>
     <div>
       <label for="restaurant-name">Restaurant name: </label>
       <input id="restaurant-name" [(ngModel)]="newRestaurant.name" placeholder="name">
