@@ -3,6 +3,7 @@ import { Restaurant } from "../../models/restaurants.model";
 import { throwIfEmpty } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 import { RestaurantsService } from "src/app/services/restaurants.service";
+import { RestaurantDetailsComponent } from "../restaurantdetails/restaurantdetails.component";
 
 @Component({
     selector: 'app-restaurants',
