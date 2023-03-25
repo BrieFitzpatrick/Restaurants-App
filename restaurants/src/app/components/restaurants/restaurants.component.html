@@ -18,6 +18,7 @@
   </div>
 
   <div *ngIf="selectedRestaurant">
+    <a routerLink="restaurantdetails" class="nav-link" routerLinkActive="active">Employee List</a>
     <h2>{{restaurants[selectedRestaurant].name | uppercase}} Details</h2>
     <div>
       <label for="restaurant-name">Restaurant name: </label>

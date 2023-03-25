@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Restaurant } from "../../models/restaurants.model";
 import { RestaurantsService } from "src/app/services/restaurants.service";
 import { RestaurantsComponent } from "../restaurants/restaurants.component";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-restaurantdetails',
@@ -9,6 +10,5 @@ import { RestaurantsComponent } from "../restaurants/restaurants.component";
     styleUrls: ['./restaurantdetails.component.scss']
   })
   export class RestaurantDetailsComponent {
-    constructor(private restaurantsService: RestaurantsService){}
-    restaurants: {[id: string]: Restaurant} = {};
+    constructor(private router: Router) {}
   }

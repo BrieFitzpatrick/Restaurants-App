@@ -4,6 +4,7 @@ import { throwIfEmpty } from "rxjs";
 import { v4 as uuidv4 } from 'uuid';
 import { RestaurantsService } from "src/app/services/restaurants.service";
 import { RestaurantDetailsComponent } from "../restaurantdetails/restaurantdetails.component";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-restaurants',
@@ -39,6 +40,5 @@ import { RestaurantDetailsComponent } from "../restaurantdetails/restaurantdetai
       }
 
     }
-    //TODO: add constructor and inject service
 }
   
