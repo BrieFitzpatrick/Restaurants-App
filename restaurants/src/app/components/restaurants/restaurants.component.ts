@@ -15,29 +15,24 @@ import { RestaurantsService } from "src/app/services/restaurants.service";
 
     name: string = '' ;
     rank: number = 0;
-    id: number = 0;
 
-    newRestaurant: Restaurant = { name: '', rank: 0};
+    newRestaurant: Restaurant = {name: '', rank: 0};
 
-    selectedRestaurant?: string;
+    selectedRestaurant: string = '';
     onSelect(restaurantKey: string): void{
       this.selectedRestaurant = restaurantKey;
     }
+
     ngOnInit() {
       this.restaurants = this.restaurantsService.getAll();
     }
 
-    add(name: string, rank: number){
-      this.restaurantsService.add(name, rank);
+    add(){
+      this.restaurantsService.add(this.name, this.rank);
     }
 
-    delete(restaurantKey: string){
-      this.restaurantsService.delete(restaurantKey);
-      if(this.selectedRestaurant === restaurantKey){
+    delete(){
+      this.restaurantsService.delete(this.selectedRestaurant);
         this.selectedRestaurant = '';
       }
-
     }
-    //TODO: add constructor and inject service
-}
-  

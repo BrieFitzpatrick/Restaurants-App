@@ -4,13 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from "@angular/core";
 import { __values } from "tslib";
 
-// TODO: add @Injectable...
-
 @Injectable({
     providedIn: 'root',
-}
+})
 
-)
 export class RestaurantsService {
 
     constructor() {}
@@ -28,18 +25,17 @@ export class RestaurantsService {
         '10': { name: 'Gyu-kaku Japanese BBQ', rank: 9.0}
         };
 
-    
     getAll() {
         return this.RESTAURANTS;
     }
 
     add(newName: string, newRank: number){
       var newRestaurant = {name: newName, rank: newRank};
-      var id: string = uuidv4(); //TODO: dyanamically generate
+      var id: string = uuidv4(); 
       this.RESTAURANTS[id] = newRestaurant;
     }
   
     delete(id: string){
       delete this.RESTAURANTS[id];
-        }
+    }
 }
