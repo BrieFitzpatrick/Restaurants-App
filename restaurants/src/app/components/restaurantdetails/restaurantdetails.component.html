@@ -1,0 +1,10 @@
+<div *ngIf="restaurant">
+    <h2>{{restaurant.name | uppercase}} Details</h2>
+    <div><span>rank: </span>{{restaurant.rank}}</div>
+    <div>
+      <label for="restaurant-name">Restaurant name: </label>
+      <input id="restaurant-name" [(ngModel)]="restaurant.name" placeholder="Restaurant name"/>
+    </div>
+    <button type="button" (click)="delete()">Delete Restaurant</button>
+    <button type="button" (click)="goBack()">go back</button>
+</div> 

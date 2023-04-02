@@ -1,9 +1,12 @@
 <h2>Restaurants</h2>
 <ol class="restaurants">
     <li *ngFor="let restaurant of restaurants | keyvalue">
-        <button [class.selected]="restaurant.key === selectedRestaurant" type="button" (click)="onSelect(restaurant.key)">
+      <a routerLink ="/restaurant/{{restaurant.key}}">
+        {{restaurant.value.name}}
+      </a>
+    <button [class.selected]="restaurant.key === selectedRestaurant" type="button" (click)="onSelect(restaurant.key)">
         <span class="name">{{restaurant.value.name}}</span>
-        </button>
+    </button>
     </li>
   </ol>
 
