@@ -5,6 +5,8 @@ import { RestaurantsComponent } from "../restaurants/restaurants.component";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
+import { Observable} from "rxjs";
+import { switchMap } from "rxjs";
 @Component({
     selector: 'app-restaurantdetails',
     templateUrl: './restaurantdetails.component.html',
@@ -14,6 +16,7 @@ import { Location } from "@angular/common";
     restaurant: Restaurant | undefined;
 
     constructor(
+        private router: Router,
         private route: ActivatedRoute,
         private restaurantService: RestaurantsService,
         private location: Location) {
@@ -36,6 +39,11 @@ import { Location } from "@angular/common";
     delete(){
         const id = String(this.route.snapshot.paramMap.get('id'));
         this.restaurantService.delete(id);
+        this.gotoRestaurants();
+    } 
+
+    gotoRestaurants() {
+        this.router.navigate(['/restaurants']);
     }
 
-    }
+}

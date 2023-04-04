@@ -35,7 +35,7 @@ export class RestaurantsService {
       var id: string = uuidv4(); 
       this.RESTAURANTS[id] = newRestaurant;
     }
-  
+    
     delete(id: string){
       delete this.RESTAURANTS[id];
     }

@@ -5,15 +5,24 @@ import { v4 as uuidv4 } from 'uuid';
 import { RestaurantsService } from "src/app/services/restaurants.service";
 import { RestaurantDetailsComponent } from "../restaurantdetails/restaurantdetails.component";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
     selector: 'app-restaurants',
     templateUrl: './restaurants.component.html',
     styleUrls: ['./restaurants.component.scss']
   })
+
   export class RestaurantsComponent implements OnInit {
-    constructor(private restaurantsService: RestaurantsService){}
     restaurants: {[id: string]: Restaurant} = {};
+
+    constructor(
+      private restaurantsService: RestaurantsService,
+      private route: ActivatedRoute,
+      private location: Location){
+
+      }
 
     name: string = '' ;
     rank: number = 0;
@@ -38,3 +47,5 @@ import { Router } from "@angular/router";
         this.selectedRestaurant = '';
       }
     }
+  
+        
