@@ -1,11 +1,12 @@
 <h2>Restaurants</h2>
 <ol class="restaurants">
     <li *ngFor="let restaurant of restaurants | keyvalue">
-        <button [class.selected]="restaurant.key === selectedRestaurant" type="button" (click)="onSelect(restaurant.key)">
-        <span class="name">{{restaurant.value.name}}</span>
-        </button>
+    <button [class.selected]="restaurant.key === selectedRestaurant" type="button" (click)="onSelect(restaurant.key)">
+        <a routerLink ="/restaurant/{{restaurant.key}}">
+          {{restaurant.value.name}}</a>
+    </button>
     </li>
-  </ol>
+</ol>
 
   <div>
     <label for="name">Restaurant name:</label>
@@ -15,17 +16,4 @@
     <input id="rank" [(ngModel)]="rank" placeholder="rank">
 
     <button type="button" (click)="add()">Add Restaurant</button>
-  </div>
-
-  <div *ngIf="selectedRestaurant">
-    <h2>{{restaurants[selectedRestaurant].name | uppercase}} Details</h2>
-    <div>
-      <label for="restaurant-name">Restaurant name: </label>
-      <input id="restaurant-name" [(ngModel)]="newRestaurant.name" placeholder="name">
-      <div>Rank: {{newRestaurant.rank}}</div>
-    </div>
-  </div>
-
-  <div *ngIf="selectedRestaurant">
-    <button type="button" (click)="delete()">Delete Restaurant</button>
   </div>

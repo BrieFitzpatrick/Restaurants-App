@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from "@angular/core";
 import { __values } from "tslib";
+import { Observable, of } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
@@ -34,8 +35,12 @@ export class RestaurantsService {
       var id: string = uuidv4(); 
       this.RESTAURANTS[id] = newRestaurant;
     }
-  
+    
     delete(id: string){
       delete this.RESTAURANTS[id];
+    }
+
+    getRestaurant(id: string): Observable<Restaurant> {
+        return of(this.RESTAURANTS[id]);
     }
 }
