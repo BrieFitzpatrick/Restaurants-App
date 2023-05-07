@@ -8,12 +8,13 @@ import { Location } from "@angular/common";
 import { Observable} from "rxjs";
 import { switchMap } from "rxjs";
 @Component({
-    selector: 'app-restaurantdetails',
-    templateUrl: './restaurantdetails.component.html',
-    styleUrls: ['./restaurantdetails.component.scss']
+    selector: 'app-restaurant-details',
+    templateUrl: './restaurant-details.component.html',
+    styleUrls: ['./restaurant-details.component.scss']
   })
   export class RestaurantDetailsComponent implements OnInit{
     restaurant: Restaurant | undefined;
+    id = String(this.route.snapshot.paramMap.get('id'));
 
     constructor(
         private router: Router,
@@ -27,23 +28,17 @@ import { switchMap } from "rxjs";
     }
 
     getRestaurant(): void {
-        const id = String(this.route.snapshot.paramMap.get('id'));
-        this.restaurantService.getRestaurant(id)
-            .subscribe(Restaurant => this.restaurant = Restaurant);
+        this.restaurantService.getRestaurant(this.id)
+            .subscribe(restaurant => this.restaurant = restaurant);
     }
 
     goBack(): void {
-        this.location.back();
+        this.router.navigate(['/restaurants']);
       }
 
     delete(){
-        const id = String(this.route.snapshot.paramMap.get('id'));
-        this.restaurantService.delete(id);
-        this.gotoRestaurants();
+        this.restaurantService.delete(this.id);
+        this.goBack();
     } 
-
-    gotoRestaurants() {
-        this.router.navigate(['/restaurants']);
-    }
 
 }

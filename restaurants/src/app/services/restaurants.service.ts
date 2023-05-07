@@ -41,7 +41,6 @@ export class RestaurantsService {
     }
 
     getRestaurant(id: string): Observable<Restaurant> {
-        const restaurant = this.RESTAURANTS[id];
-        return of(restaurant);
+        return of(this.RESTAURANTS[id]);
     }
 }
