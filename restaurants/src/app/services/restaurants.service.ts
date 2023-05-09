@@ -43,4 +43,8 @@ export class RestaurantsService {
     getRestaurant(id: string): Observable<Restaurant> {
         return of(this.RESTAURANTS[id]);
     }
+
+    updateRestaurant(id: string, nameUpdate: string, rankUpdate: number){
+        this.RESTAURANTS[id] = {name: nameUpdate, rank: rankUpdate};
+    }
 }

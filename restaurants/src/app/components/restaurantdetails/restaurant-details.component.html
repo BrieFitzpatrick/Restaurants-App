@@ -2,15 +2,19 @@
     <h2>{{restaurant.name | uppercase}} Details</h2>
     <div>
       <label for="restaurant-name">Restaurant name: </label> 
-        <div id="restaurant-name">{{restaurant.name}}</div>
+        <span id="restaurant-name">{{restaurant.name}}</span>
     </div>
     <div>
         <label for="restaurant-rank">rank: </label> 
-        <div id="restaurant-rank">{{restaurant.rank}}</div>
+        <span id="restaurant-rank">{{restaurant.rank}}</span>
     </div>
     <button id="deleteBtn" type="button" (click)="delete()">Delete Restaurant
         <a routerLink ="/restaurants"></a>
     </button>
 
-    <button id="goBackBtn" type="button" (click)="goBack()">go back</button>
-</div> 
+    <button id="goBackBtn" type="button" (click)="goBack()">Go Back</button>
+
+    <button id="editBtn" type="button" (click)="onSelect(this.id)">
+        <a routerLink ="/restaurant/{{this.id}}/edit">Edit</a>
+    </button>
+    

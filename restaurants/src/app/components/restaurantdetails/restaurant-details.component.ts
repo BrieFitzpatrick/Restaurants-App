@@ -14,7 +14,7 @@ import { switchMap } from "rxjs";
   })
   export class RestaurantDetailsComponent implements OnInit{
     restaurant: Restaurant | undefined;
-    id = String(this.route.snapshot.paramMap.get('id'));
+    id: string = '';
 
     constructor(
         private router: Router,
@@ -24,6 +24,7 @@ import { switchMap } from "rxjs";
     }
 
     ngOnInit(): void {
+        this.id = String(this.route.snapshot.paramMap.get('id'));
         this.getRestaurant();
     }
 
@@ -41,4 +42,7 @@ import { switchMap } from "rxjs";
         this.goBack();
     } 
 
+    onSelect(id: String){
+        id = this.id
+    }
 }
