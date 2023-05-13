@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { RestaurantDetailsComponent } from './components/restaurantdetails/restaurant-details.component';
+import { RestaurantEditComponent } from './components/restaurantedit/restaurant-edit/restaurant-edit.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { RestaurantDetailsComponent } from './components/restaurantdetails/resta
     AppComponent,
     RestaurantsComponent,
     RestaurantDetailsComponent,
+    RestaurantEditComponent,
 
   ],
   imports: [

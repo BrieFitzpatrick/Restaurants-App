@@ -1,0 +1,14 @@
+<div *ngIf="restaurant">
+    <h2>{{restaurant.name | uppercase}} EDIT Details</h2>
+    <div>
+        <label for="name">Restaurant name:</label>
+        <input id="name" [(ngModel)]="restaurant.name" placeholder="name"><br>
+    
+        <label for="rank">Rank:</label>
+        <input id="rank" [(ngModel)]="restaurant.rank" placeholder="rank"><br>
+    
+        <button type="button" (click)="save(restaurant.name, restaurant.rank)">Save</button>
+        <button type="button" (click)="cancel()">Cancel
+        </button>
+      </div>
+    
